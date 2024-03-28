@@ -1,10 +1,13 @@
 # Hospital-Management-System
 This is a repository for Hospital Management System project.
 <br>
-Author - Arham Kaleem
+Authors
+<br> 
+Arham Kaleem
 <br>
-M Shayan Qureshi
+Muhammad Shayan Qureshi
 <br>
 Muhammad Ahmad Shafee
 <br>
 Muhammad Manan
+
