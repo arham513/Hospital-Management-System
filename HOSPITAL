@@ -1,0 +1,292 @@
+// HospitalManagementSystem.cpp : This file contains the 'main' function. Program execution begins and ends there.
+// CONNECT SQL to C++. Database kay liye....
+#include <iostream>
+#include <string>
+using namespace std;
+class Administrator {
+private:
+    string adminusername;
+    string adminpassword;
+public:
+    Administrator(string adminusername, string adminpassword) // setting administrative credentials
+    {
+        this->adminusername = adminusername;
+        this->adminpassword = adminpassword;
+    }
+    void setadminusername(string adminusername)
+    {
+        this->adminusername = adminusername;
+    }
+    void setadminpassword(string adminpassword)
+    {
+        this->adminpassword = adminpassword;
+    }
+    string const getadminusername() const
+    {
+        return  adminusername;
+    }
+    string const getadminpassword() const
+    {
+        return  adminpassword;
+    }
+    void trackmedicinesandequipmentinventory()
+    {
+        cout << "Inventory Overview " << endl;
+
+    }
+};
+class Patient
+{
+private:
+    int    patientID;
+    string patientname;
+    string patientgender;
+    int patientdateOfBirth;
+    int patientmonthofbirth;
+    int patientyearofbirth;
+    string address;
+    string patientcnic;
+    string patientcontactno;
+    string emailaddress;
+    string emergencycontactname;
+    string emergencycontactno;
+    string relationship;
+public:
+    // Setter methods
+    void setPatientID(int id) {
+        if ( id > 0)
+        patientID = id;
+        else
+        {
+            cout << "PatientID cannot be negative" << endl;
+        }
+    }
+    void setPatientName(const string& name) {
+        patientname = name;
+    }
+    void setPatientGender(const string& gender) {
+        patientgender = gender;
+    }
+    void setDateOfBirth(const int dateofbirth) {
+        patientdateOfBirth = dateofbirth;
+    }
+    void setMonthOfBirth(const int monthofbirth) {
+        patientmonthofbirth = monthofbirth;
+    }
+    void setYearOfBirth(const int yearofbirth)
+    {
+        patientyearofbirth = yearofbirth;
+    }
+    void setAddress(const string& addr) {
+        address = addr;
+    }
+    void setPatientCNIC(const string& cnic) {
+        patientcnic = cnic;
+    }
+    void setContactNo(const string& contact) {
+        patientcontactno = contact;
+    }
+    void setEmailAddress(const string& email) {
+        emailaddress = email;
+    }
+    void setEmergencyContactName(const string& name) {
+        emergencycontactname = name;
+    }
+    void setRelationship(const string& rel) {
+        relationship = rel;
+    }
+    void setEmergencyContactNumber(const string& contact) {
+        emergencycontactno = contact;
+    }
+    // Getter methods
+    int getPatientID() const {
+        return patientID;
+    }
+    const string& getPatientName() const {
+        return patientname;
+    }
+    const string& getPatientGender() const {
+        return patientgender;
+    }
+
+    const int& getDateOfBirth() const {
+        return patientdateOfBirth;
+    }
+    const int& getMonthOfBirth() const {
+        return patientmonthofbirth;
+    }
+    const int& getyearOfBirth() const {
+        return patientyearofbirth;
+    }
+    const string& getAddress() const {
+        return address;
+    }
+    const string& getPatientCNIC() const {
+        return patientcnic;
+    }
+    const string& getContactNo() const {
+        return patientcontactno;
+    }
+    const string& getEmailAddress() const {
+        return emailaddress;
+    }
+    const string& getEmergencyContactName() const {
+        return emergencycontactname;
+    }
+    const string& getRelationship() const {
+        return relationship;
+    }
+    const string& getEmergencyContactNumber() const {
+        return emergencycontactno;
+    }
+    void patientregandadmissionprocess()
+    {
+        cout << "Provide the following personal information:" << endl;
+        cout << "Enter your full name" << endl;
+        cin.ignore();
+        getline(cin, patientname); // getline ensures that only new line char acts as delimiter for our string
+        cout << "Enter date of birth. First date, then month, then year ( with spaces)" << endl;
+        cin >> patientdateOfBirth >> patientmonthofbirth >> patientyearofbirth;
+        if (patientdateOfBirth < 0 || patientdateOfBirth > 31 || patientmonthofbirth < 0 || patientmonthofbirth> 12 || patientyearofbirth < 0)
+        {
+            cout << "Wrong date of birth entered. Kindly re-check and try again " << endl;
+            exit(1);
+        }
+        cout << "Enter gender" << endl;
+        getline(cin, patientgender);
+        cin.ignore();
+        cout << "Enter address" << endl;
+        getline(cin, address);
+        cin.ignore();
+        cout << "Enter contact number" << endl;
+        getline(cin, patientcontactno);
+        cin.ignore();
+        cout << "Enter email address" << endl;
+        getline(cin, emailaddress);
+        cin.ignore();
+        cout << "Enter your CNIC for identification purposes" << endl;
+        getline(cin, patientcnic);
+        cin.ignore();
+        cout << "Enter emergency contact name" << endl;
+        getline(cin, emergencycontactname);
+        cin.ignore();
+        cout << "Kindly mention your relationship with patient" << endl;
+        getline(cin, relationship);
+        cin.ignore();
+        cout << " Enter emergency contact number" << endl;
+        getline(cin, emergencycontactno);
+        cin.ignore();
+        cout << "Confirm" << endl;
+        // UI saay "Confirm" ka feature daalo... 
+        cout << "Thanks for trusting our hospital" << endl;
+        cout << "You will be contacted soon after form is processed. We hope that you will enjoy your stay at our hospital" << endl;
+    }
+    void appointmentbookingsystem()
+    {
+        string problem;
+        string doctor;
+        int dateof = 0, timeof = 0; //24-hour clock
+        cout << "Assalam o Alaikum And Welcome to the Appointment Booking System of our hospital" << endl;
+        cout << "Kindly search for your healthcare provider, the doctor with which you want to book your appointment" << endl;
+        cin.ignore();
+        getline(cin, doctor); // search for required doctor in database
+        cout << "Enter the date and time appropriate for you.Note you can  select any date of current month and time according to 24-hour clock " << endl;
+        cout << "Kindly enter numerical values for date and time to avoid system malfunction" << endl;
+        cin >> dateof >> timeof;
+        if (dateof <= 0 || dateof > 31 || timeof < 0 || timeof > 24) // validation
+        {
+            cout << "Wrong date and time entered. Kindly try again." << endl;
+            exit(1);
+        }
+        cin.ignore();
+        cout << "Patient Personal Information" << endl;
+        cout << "Kindly enter your  name " << endl;
+        getline(cin, patientname);
+        cout << "Kindly enter your valid date of birth" << endl;
+        cin >> patientdateOfBirth >> patientmonthofbirth >> patientyearofbirth;
+        if (patientdateOfBirth < 0 || patientdateOfBirth > 31 || patientmonthofbirth < 0 || patientmonthofbirth > 12 || patientyearofbirth < 0 || patientyearofbirth > 2024)
+        {
+            cout << "Wrong data entered. Failed validation check" << endl;
+            cout << "Kindly try again. You may need to re-load the system" << endl;
+            exit(1);
+        }
+        cout << "Kindly enter your CNIC" << endl;
+        getline(cin, patientcnic);
+        cin.ignore();
+        cout << "Briefly describe the reason for your appointment" << endl;
+        getline(cin, problem);
+        cin.ignore();
+        cout << "Confirm" << "    " << "Back to Main Menu" << endl;
+        cout << "Cancel" << endl;
+
+    }
+};
+int main()
+{
+    string username, password;
+    int choice = 0;
+    cout << "Welcome to the Hospital management system!\n";
+    cout << "Your one-stop pathway to the hospital" << endl;
+    cout << "Kindly select your desired service" << endl;
+    cout << "Press 1 for patient registration and admission process " << endl;
+    cout << "Press 2 for appointment booking system" << endl;
+    cout << "Press 3 to view hospital contact information" << endl;
+    cout << "Press 4 to view your comprehensive health record report card" << endl;
+    cout << "If you are an administrator, press 5 to track medicine and equipment  at the hospital \n";
+    cin >> choice;
+    if (choice == 1)
+    { // patient registration and admission process
+        Patient p1; // patient obj created ... patientId saay list banao kis tarah......
+        p1.patientregandadmissionprocess();
+    }
+    else if (choice == 2)
+    {
+        Patient p1;
+        p1.appointmentbookingsystem();
+
+    }
+    else if (choice == 3)
+    {
+        void staffcontactinformation();
+    }
+    else if (choice == 4)
+    {
+        void displayhealthrecord();
+        // display health record... database banay gi..............
+    }
+    else if (choice == 5)
+    {
+        string username, password;
+        cout << "To confirm your credentials, enter your credentials for admin username and admin password " << endl;
+        cin >> username >> password;
+        Administrator a1("Admin", "Lahore13$");
+        if (username == a1.getadminusername() && password == a1.getadminpassword())
+        {
+            a1.trackmedicinesandequipmentinventory();
+        }
+        else
+        {
+            cout << " Wrong Credentials" << endl;
+            exit(1);
+        }
+    }
+}
+void staffcontactinformation()
+{
+    cout << "Department" << "  " << "Contact No" << endl;
+    cout << "Receptionist( main desk)" << "042-35789042 " << endl;
+    cout << "Security Team " << "042-35678901" << endl;
+    cout << "Emergency Department " << "042 - 3456789" << endl;
+    cout << "Diagnostic And Testing Services " << "042-33897120" << endl;
+    cout << "Complaint Cell" << "042-35123450" << endl;
+    // iss tarah
+    cout << "Numbers for other departments can be obtained through contacting the main desk(receptionist)" << endl;
+}
+
+void displayhealthrecord()
+{
+
+
+
+
+}
